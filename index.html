@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swimming Duck 🦆</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f8ff;
+            overflow: hidden;
+        }
+
+        /* Pool container */
+        .pool {
+            width: 80vw;
+            max-width: 600px;
+            height: 40vh;
+            max-height: 300px;
+            background-color: #4682b4;
+            border-radius: 50px;
+            position: relative;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.2);
+        }
+
+        /* Water ripples effect */
+        .pool::before {
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 5px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 45px;
+            animation: ripple 3s infinite ease-in-out;
+        }
+
+        /* Swimming duck */
+        .duck {
+            font-size: 48px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: swim 10s infinite linear alternate;
+        }
+
+        /* Animation keyframes */
+        @keyframes swim {
+            0% { left: -50px; transform: translateY(-50%) rotate(0deg); }
+            25% { transform: translateY(-55%) rotate(5deg); }
+            50% { transform: translateY(-50%) rotate(0deg); }
+            75% { transform: translateY(-45%) rotate(-5deg); }
+            100% { left: calc(100% + 50px); transform: translateY(-50%) rotate(0deg); }
+        }
+
+        @keyframes ripple {
+            0%, 100% { opacity: 0.1; }
+            50% { opacity: 0.2; }
+        }
+
+        /* Small screen adjustment */
+        @media (max-width: 480px) {
+            .duck { font-size: 36px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="pool">
+        <div class="duck">🦆</div>
+    </div>
+</body>
+</html>
