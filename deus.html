@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emoji City 🏙️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(#87CEEB, #E0F6FF);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Sky elements */
+        .sky {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .cloud {
+            font-size: 32px;
+            position: absolute;
+            opacity: 0.8;
+            animation: float 40s infinite linear;
+        }
+
+        .cloud:nth-child(1) { top: 10%; left: -100px; animation-duration: 55s; }
+        .cloud:nth-child(2) { top: 20%; left: -150px; animation-duration: 45s; font-size: 40px; }
+        .cloud:nth-child(3) { top: 15%; right: -120px; animation-duration: 60s; animation-direction: reverse; }
+
+        /* City ground */
+        .ground {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 25vh;
+            background: linear-gradient(#8B4513, #A0522D);
+            border-top: 3px solid #5D391E;
+        }
+
+        /* Road system */
+        .road {
+            position: absolute;
+            bottom: 5vh;
+            width: 100%;
+            height: 8vh;
+            background: #333333;
+            border-top: 2px dashed #FFFFFF;
+            border-bottom: 2px dashed #FFFFFF;
+            overflow: hidden;
+        }
+
+        .sidewalk {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 5vh;
+            background: #D3D3D3;
+        }
+
+        /* Building container */
+        .city-buildings {
+            position: absolute;
+            bottom: 13vh;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            height: 60vh;
+        }
+
+        /* Building styles */
+        .building {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #708090;
+            border-top: 4px solid #5F6B78;
+            border-radius: 4px 4px 0 0;
+            padding: 8px;
+            gap: 4px;
+        }
+
+        .building:nth-child(1) { height: 45vh; width: 8vw; }
+        .building:nth-child(2) { height: 55vh; width: 10vw; background: #696969; }
+        .building:nth-child(3) { height: 35vh; width: 7vw; background: #778899; }
+        .building:nth-child(4) { height: 50vh; width: 9vw; background: #2F4F4F; }
+        .building:nth-child(5) { height: 40vh; width: 8vw; background: #556B2F; }
+
+        .window-row {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            gap: 4px;
+        }
+
+        .window {
+            font-size: 16px;
+            animation: blink 3s infinite alternate;
+        }
+
+        .building-top {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        /* Moving vehicles */
+        .vehicle {
+            position: absolute;
+            font-size: 32px;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: drive linear infinite;
+        }
+
+        .car-right {
+            left: -60px;
+            animation-duration: 25s;
+        }
+
+        .car-left {
+            right: -60px;
+            animation-duration: 30s;
+            transform: translateY(-50%) scaleX(-1); /* Flip direction */
+        }
+
+        .bike-right {
+            left: -40px;
+            animation-duration: 15s;
+            font-size: 24px;
+        }
+
+        .truck-right {
+            left: -80px;
+            animation-duration: 35s;
+            font-size: 40px;
+        }
+
+        /* Animation keyframes */
+        @keyframes drive {
+            100% { transform: translateY(-50%) translateX(calc(100vw + 100px)); }
+        }
+
+        @keyframes float {
+            100% { transform: translateX(calc(100vw + 200px)); }
+        }
+
+        @keyframes blink {
+            0%, 70% { opacity: 1; }
+            100% { opacity: 0.3; }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .building { width: 15vw !important; }
+            .vehicle { font-size: 24px; }
+            .truck-right { font-size: 32px; }
+            .bike-right { font-size: 20px; }
+            .window { font-size: 12px; }
+            .building-top { font-size: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sky with clouds -->
+    <div class="sky">
+        <div class="cloud">☁️</div>
+        <div class="cloud">☁️</div>
+        <div class="cloud">☁️</div>
+    </div>
+
+    <!-- City buildings -->
+    <div class="city-buildings">
+        <div class="building">
+            <div class="building-top">🏢</div>
+            <div class="window-row"><span class="window">💡</span><span class="window">💡</span></div>
+            <div class="window-row"><span class="window">💡</span><span class="window">💡</span></div>
+            <div class="window-row"><span class="window">💡</span><span class="window">💡</span></div>
+            <div class="window-row"><span class="window">💡</span><span class="window">💡</span></div>
+            <div class="window-row"><span class="window">💡</span><span class="window">💡</span></div>
+        </div>
+        <div class="building">
+            <div class="building-top">🏬</div>
+            <div class="window-row"><span class="window">💡</span><span class="window">💡</span><span class="window">💡</span></div>
+            <div class="window-row"><span class="window">💡</span><span class="window">💡</span><span class="window">💡</span></div>
+            <div class="window-row"><span class="window">💡</span><span class="window">💡</span><span class="window">💡</span></div>
+            <div class="window-row"><span class="window">💡</span><span class="window">💡</span><span class="window">💡</span></div>
+            <div class="window-row"><span class="window">💡</span><span class="window">💡</span><span class="window">💡</span></div>
+            <div class="window-row"><span class="window">💡</span><span class="window">💡</span><span class="window">💡</span></div>
+        </div>
+        <div class="building">
+            <div class="building-top">🏣</div>
+            <div class="window-row"><span class="window">💡</span><span class="window">💡</span></div>
+            <div class="window-row"><span class="window">💡</span><span class="window">💡</span></div>
+            <div class="window-row"><span class="window">💡</span><span class="window">💡</span></div>
+        </div>
+        <div class="building">
+            <div class="building-top">🏦</div>
+            <div class="window-row"><span class="window">💡</span><span class="window">💡</span><span class="window">💡</span></div>
+            <div class="window-row"><span class="window">💡</span><span class="window">💡</span><span class="window">💡</span></div>
+            <div class="window-row"><span class="window">💡</span><span class="window">💡</span><span class="window">💡</span></div>
+            <div class="window-row"><span class="window">💡</span><span class="window">💡</span><span class="window">💡</span></div>
+            <div class="window-row"><span class="window">💡</span><span class="window">💡</span><span class="window">💡</span></div>
+        </div>
+        <div class="building">
+            <div class="building-top">🏥</div>
+            <div class="window-row"><span class="window">💡</span><span class="window">💡</span></div>
+            <div class="window-row"><span class="window">💡</span><span class="window">💡</span></div>
+            <div class="window-row"><span class="window">💡</span><span class="window">💡</span></div>
+            <div class="window-row"><span class="window">💡</span><span class="window">💡</span></div>
+        </div>
+    </div>
+
+    <!-- Road and vehicles -->
+    <div class="road">
+        <div class="vehicle car-right">🚗</div>
+        <div class="vehicle car-left">🚙</div>
+        <div class="vehicle bike-right">🚲</div>
+        <div class="vehicle truck-right">🚚</div>
+    </div>
+
+    <!-- Sidewalk -->
+    <div class="sidewalk">
+        <span style="position:absolute; left:20%; font-size:20px;">🚶</span>
+        <span style="position:absolute; right:30%; font-size:20px;">👫</span>
+    </div>
+
+    <!-- Ground -->
+    <div class="ground">
+        <span style="position:absolute; left:10%; font-size:24px;">🌳</span>
+        <span style="position:absolute; right:15%; font-size:24px;">🌲</span>
+        <span style="position:absolute; left:45%; font-size:20px;">🗑️</span>
+    </div>
+</body>
+  </html>
+  
